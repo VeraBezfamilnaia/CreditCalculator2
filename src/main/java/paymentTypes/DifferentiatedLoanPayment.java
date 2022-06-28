@@ -5,11 +5,11 @@ public class DifferentiatedLoanPayment implements LoanPayment {
 
     @Override
     public double calcPayment(double loan, double percent, int loanTermInMonths, int completedPayments) {
-        return 0;
+        return loan / loanTermInMonths + (loan - (loan / loanTermInMonths) * completedPayments) * percent / loanTermInMonths;
     }
 
     @Override
     public double calcOverpayment(double loan, double percent) {
-        return 0;
+        return loan / percent + CONST_VALUE;
     }
 }
